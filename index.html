@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Air Quality App</title>
+</head>
+<body>
+    <h1>Проверка качества воздуха</h1>
+    <input id="city" placeholder="Введите город">
+    <button onclick="checkAQI()">Проверить</button>
+    <pre id="result"></pre>
+
+    <script>
+        async function checkAQI() {
+            let city = document.getElementById("city").value;
+            let response = await fetch(`https://ТВОЙ_URL_РАЙЛВЕЙ/air_quality?city=${city}`);
+            let data = await response.json();
+            document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+</html>
